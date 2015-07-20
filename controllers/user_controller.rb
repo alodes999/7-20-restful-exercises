@@ -1,3 +1,11 @@
+def current_user
+  if session[:user_id]
+    @current_user = User.find(session[:user_id])
+  else
+    redirect "/login"
+  end
+end
+
 get "/users" do
   @users = User.all
   
@@ -17,6 +25,8 @@ post "/users" do
 end
 
 get "/users/delete" do
+  current_user
+  
   @users = User.all
   erb :"/users/delete"
 end
@@ -28,6 +38,8 @@ delete "/users/:id" do
 end
 
 get "/users/edit" do
+  current_user
+  
   @users = User.all
   erb :"/users/edit"
 end

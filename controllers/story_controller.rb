@@ -1,3 +1,11 @@
+def current_user
+  if session[:user_id]
+    @current_user = User.find(session[:user_id])
+  else
+    redirect "/login"
+  end
+end
+
 get "/users/:user_id/stories" do
   @user = User.find(params["user_id"])
   
@@ -7,6 +15,8 @@ get "/users/:user_id/stories" do
 end
 
 get "/users/:user_id/stories/new" do
+  current_user
+  
   @user = User.find(params["user_id"])
   
   erb :"/stories/new"
@@ -19,6 +29,8 @@ post "/users/:user_id/stories" do
 end
 
 get "/users/:user_id/stories/delete" do
+  current_user
+  
   @user = User.find(params["user_id"])
   
   @stories = Story.where("user_id = #{params["user_id"]}")
@@ -32,6 +44,8 @@ delete "/users/:user_id/stories/:id" do
 end
 
 get "/users/:user_id/stories/edit" do
+  current_user
+  
   @user = User.find(params["user_id"])
   
   @stories = Story.where("user_id = #{params["user_id"]}")

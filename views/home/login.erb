@@ -4,7 +4,7 @@
 
 <h2 class= centered>Please fill in the information to sign up:</h2>
 
-<form class= centered action="/save_sign_up">
+<form class= centered action="/save_sign_up" method= "post">
   <input type="text" placeholder="email" name="user[email]">
   <input type="password" placeholder="password" name="user[password]">
   
@@ -15,7 +15,7 @@
 
 <h2 class= centered>Login information:</h2>
 
-<form class= centered action="/verify_login">
+<form class= centered action="/verify_login" method= "post">
   <input type="text" placeholder="email" name="user[email]">
   <input type="password" placeholder="password" name="user[password]">
   
