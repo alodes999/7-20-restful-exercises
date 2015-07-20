@@ -24,28 +24,22 @@ post "/users" do
   redirect "/users"
 end
 
-get "/users/delete" do
+get "/users/:id/delete" do
   current_user
-  
-  @users = User.all
-  erb :"/users/delete"
-end
-
-delete "/users/:id" do
-  User.delete(params["users"]["id"])
+  User.delete(params["id"])
   
   redirect "/users"
 end
 
-get "/users/edit" do
+get "/users/:id/edit" do
   current_user
   
-  @users = User.all
+  # @users = User.all
   erb :"/users/edit"
 end
 
 put "/users/:id" do
-  @users = User.find(params["users"]["id"])
+  @users = User.find(params["id"])
   
   @users.email = params["users"]["email"]
   @users.password = params["users"]["password"]

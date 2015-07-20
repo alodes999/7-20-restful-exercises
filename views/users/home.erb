@@ -5,17 +5,21 @@
     <tr>
       <th>ID</th>
       <th>Email</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
     <% @users.each do |u| %>
     <tr>
       <td><%= u.id %></td>
       <td><%= u.email %></td>
+      <td><a href= "/users/#{<%= u.id %>}/edit"></a>Edit a User</td>
+      <td><a href= "/users/#{<%= u.id %>}/delete"></a>Delete a User</td>
     </tr>
     <% end %>
   </table>
   
   <ul>
     <li><a href="/users/new">Add a User</a></li>
-    <li><a href="/users/edit">Edit a User</a></li>
-    <li><a href="/users/delete">Delete a User</a></li>
+    <!-- <li><a href="/users/edit">Edit a User</a></li>
+    <li><a href="/users/delete">Delete a User</a></li> -->
   </ul>
