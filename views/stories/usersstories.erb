@@ -1,0 +1,8 @@
+<h2>Stories for User <%= @user.email %></h2>
+
+<ul>
+  <% @stories.each do |s| %>
+    <li><%= s.title %></li>
+  <% end %>  
+</ul>
+  
