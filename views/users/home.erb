@@ -12,8 +12,8 @@
     <tr>
       <td><%= u.id %></td>
       <td><%= u.email %></td>
-      <td><a href= "/users/#{<%= u.id %>}/edit">Edit a User</a></td>
-      <td><a href= "/users/#{<%= u.id %>}/delete">Delete a User</a></td>
+      <td><a href= "/users/<%= u.id %>/edit">Edit a User</a></td>
+      <td><a href= "/users/<%= u.id %>/delete">Delete a User</a></td>
     </tr>
     <% end %>
   </table>
