@@ -1,0 +1,15 @@
+
+  <form action="/users/<%= params["users"]["id"] %>" method= "post">
+    <p>Enter user id to delete</p>
+    
+    <select name= "users[id]">
+      <%@users.each do|u| %>
+      <option value= "<%= u.id  %>>" - "<%= u.email %>"</option>
+      <% end %>
+    </select>
+      
+    <input type= "hidden" name="_method" value= "delete">
+    
+    <input type="submit">
+  </form>
+
