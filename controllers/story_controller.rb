@@ -18,15 +18,17 @@ post "/users/:user_id/stories" do
   redirect "/users/#{params["user_id"]}/stories"
 end
 
-get "/users/delete" do
-  @users = User.all
-  erb :"/users/delete"
+get "/users/:user_id/stories/delete" do
+  @user = User.find(params["user_id"])
+  
+  @stories = Story.where("user_id = #{params["user_id"]}")
+  erb :"/stories/delete"
 end
 
-delete "/users/:id" do
-  users.delete(params["users"]["id"])
+delete "/users/:user_id/stories/:id" do
+  Story.delete(params["story"]["id"])
   
-  redirect "/users"
+  redirect "/users/#{params["user_id"]}/stories"
 end
 
 get "/users/edit" do

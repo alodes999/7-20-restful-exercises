@@ -1,0 +1,15 @@
+<h2>Delete Story for <%= @user.email %></h2>
+
+  <form action="/users/<%= @user.id %>/stories/<%= params["story"]["id"] %>" method= "post">
+    <p>Enter user id to delete</p>
+    
+    <select name= "story[id]">
+      <%@stories.each do|s| %>
+      <option value= "<%= s.id  %>>" - "<%= s.title %>"</option>
+      <% end %>
+    </select>
+      
+    <input type= "hidden" name="_method" value= "delete">
+    
+    <input type="submit">
+  </form>

@@ -22,7 +22,7 @@ get "/users/delete" do
 end
 
 delete "/users/:id" do
-  users.delete(params["users"]["id"])
+  User.delete(params["users"]["id"])
   
   redirect "/users"
 end
