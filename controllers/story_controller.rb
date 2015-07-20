@@ -6,16 +6,16 @@ get "/users/:user_id/stories" do
   erb :"/stories/usersstories"
 end
 
-get "/users/new" do
-  @users = User.new
+get "/users/:user_id/stories/new" do
+  @user = User.find(params["user_id"])
   
-  erb :"/users/new"
+  erb :"/stories/new"
 end
 
-post "/users" do
-  @new_user = User.create({"email" => params["users"]["email"], "password" => params["users"]["password"]})
+post "/users/:user_id/stories" do
+  @story = Story.create({"title" => params["story"]["title"]})
   
-  redirect "/users"
+  redirect "/users/#{params["user_id"]}/stories"
 end
 
 get "/users/delete" do
