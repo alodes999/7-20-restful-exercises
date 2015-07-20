@@ -7,7 +7,11 @@ post "/save_sign_up" do
   the_password = BCrypt::Password.create(params["user"]["password"])
   new_user = User.create({"email" => params["user"]["email"], "password" => the_password})
   
-  redirect "/users"
+  if new_user.error.nil?
+    redirect "/users/#{new_user.id}/stories"
+  else
+    erb :"/home/login"
+  end
 end
 
 post "/verify_login" do
@@ -32,5 +36,5 @@ end
 
 get "/logout" do
   session.clear
-  redirect "/home/login"
+  redirect "/"
 end
