@@ -30,6 +30,8 @@ end
 #models
 
 require_relative "models/user.rb"
+require_relative "models/story.rb"
 #controllers
 
 require_relative "controllers/user_controller.rb"
+require_relative "controllers/story_controller.rb"
