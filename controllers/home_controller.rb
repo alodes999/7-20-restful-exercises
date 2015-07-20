@@ -22,7 +22,7 @@ post "/verify_login" do
   # actual_password = BCrypt::Password.new("$2a$10$87jFZs7pY2Fh33HR.lA9ouVLzevh45esv0UjdYF/b1jOGKC.YtfG2")
 
   if actual_password == attempted_password
-    redirect "/users"
+    redirect "/users/#{@user.id}/stories"
   else
     @user.errors << "Invalid login."
     
