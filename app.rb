@@ -32,3 +32,4 @@ end
 require_relative "models/user.rb"
 #controllers
 
+require_relative "controllers/user_controller.rb"
