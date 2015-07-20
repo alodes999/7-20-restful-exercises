@@ -1,0 +1,16 @@
+<h2>Edit Story for <%= @user.email %></h2>
+
+  <form action="/users/<%= @user.id %>/stories/<%= params["story"]["id"] %>" method= "post">
+    <p>Pick story to change</p>
+    
+    <select name= "story[id]">
+      <%@stories.each do|s| %>
+      <option value= "<%= s.id  %>>" - "<%= s.title %>"</option>
+      <% end %>
+    </select>
+      
+    <input type= "hidden" name="_method" value= "put">
+    <input type="text" name="story[title]" placeholder="New Title">
+    
+    <input type="submit">
+  </form>

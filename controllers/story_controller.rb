@@ -31,23 +31,19 @@ delete "/users/:user_id/stories/:id" do
   redirect "/users/#{params["user_id"]}/stories"
 end
 
-get "/users/edit" do
-  @users = User.all
-  erb :"/users/edit"
+get "/users/:user_id/stories/edit" do
+  @user = User.find(params["user_id"])
+  
+  @stories = Story.where("user_id = #{params["user_id"]}")
+  erb :"/stories/edit"
 end
 
-put "/users/:id" do
-  @users = User.find(params["users"]["id"])
+put "/users/:user_id/stories/:id" do
+  @story = Story.find(params["story"]["id"])
   
-  @users.email = params["users"]["email"]
-  @users.password = params["users"]["password"]
+  @story.title = params["story"]["title"]
   
-  @users.save
+  @story.save
   
-  redirect "/users"
-end
-
-get "/users/:id" do
-  @users = User.find(params["id"])
-  erb :"/users/show"
+  redirect "/users/#{params["user_id"]}/stories"
 end
