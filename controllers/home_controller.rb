@@ -7,9 +7,10 @@ post "/save_sign_up" do
   the_password = BCrypt::Password.create(params["user"]["password"])
   new_user = User.create({"email" => params["user"]["email"], "password" => the_password})
   
-  if new_user.errors.nil?
+  if new_user.errors.messages.length == 0
     redirect "/users/#{new_user.id}/stories"
   else
+    @errors = "Invalid Login"
     erb :"/home/login"
   end
 end
@@ -26,7 +27,7 @@ post "/verify_login" do
   # actual_password = BCrypt::Password.new("$2a$10$87jFZs7pY2Fh33HR.lA9ouVLzevh45esv0UjdYF/b1jOGKC.YtfG2")
 
   if actual_password == attempted_password
-    redirect "/users/#{@user.id}/stories"
+    redirect "/users/#{@user[0].id}/stories"
   else
     @user.errors << "Invalid login."
     
