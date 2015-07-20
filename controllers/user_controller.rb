@@ -1,10 +1,12 @@
 get "/users" do
-  @users = User.new
+  @users = User.all
   
   erb :"/users/home"
 end
 
 get "/users/new" do
+  @users = User.new
+  
   erb :"/users/new"
 end
 
