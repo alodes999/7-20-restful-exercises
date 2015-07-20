@@ -5,13 +5,11 @@
     <tr>
       <th>ID</th>
       <th>Email</th>
-      <th>Password</th>
     </tr>
     <% @users.each do |u| %>
     <tr>
       <td><%= u.id %></td>
       <td><%= u.email %></td>
-      <td><%= u.password%></td>
     </tr>
     <% end %>
   </table>
