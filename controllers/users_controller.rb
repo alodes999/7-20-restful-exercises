@@ -1,5 +1,5 @@
 get "/users" do
-  @users = Users.new
+  @users = User.new
   
   erb :"/users/home"
 end
@@ -9,18 +9,39 @@ get "/users/new" do
 end
 
 post "/users" do
-  @new_user = Users.create({"email" => params["user"]["email"], "password" => params["user"]["password"]})
+  @new_user = User.create({"email" => params["users"]["email"], "password" => params["users"]["password"]})
   
   redirect "/users"
 end
 
 get "/users/delete" do
-  @users = Users.all
+  @users = User.all
   erb :"/users/delete"
 end
 
-delete "/users/:x" do
-  users.delete(params["user"]["id"])
+delete "/users/:id" do
+  users.delete(params["users"]["id"])
   
   redirect "/users"
+end
+
+get "/users/edit" do
+  @users = User.all
+  erb :"/users/edit"
+end
+
+put "/users/:id" do
+  @users = User.find(params["users"]["id"])
+  
+  @users.email = params["users"]["email"]
+  @users.password = params["users"]["password"]
+  
+  @users.save
+  
+  redirect "/users"
+end
+
+get "/users/:id" do
+  @users = User.find(params["id"])
+  erb :"/users/show"
 end
