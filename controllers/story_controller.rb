@@ -13,7 +13,7 @@ get "/users/:user_id/stories/new" do
 end
 
 post "/users/:user_id/stories" do
-  @story = Story.create({"title" => params["story"]["title"]})
+  @story = Story.create({"title" => params["story"]["title"], "user_id" => params["user_id"]})
   
   redirect "/users/#{params["user_id"]}/stories"
 end
