@@ -11,8 +11,8 @@
   <tr>
     <td><%= s.id %></td>
     <td><%= s.title %></td>
-    <td><a href= "/users/<%= user.id %>/stories/edit/<%= s.id %>">Edit a Story</a></td>
-    <td><a href= "/users/<%= user.id %>/stories/delete/<%= s.id %>">Delete a Story</a></td>
+    <td><a href= "/users/<%= @user.id %>/stories/edit/<%= s.id %>">Edit a Story</a></td>
+    <td><a href= "/users/<%= @user.id %>/stories/delete/<%= s.id %>">Delete a Story</a></td>
   </tr>
   <% end %>
 </table>
