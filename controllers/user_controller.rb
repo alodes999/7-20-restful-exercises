@@ -12,17 +12,6 @@ get "/users" do
   erb :"/users/home"
 end
 
-get "/users/new" do
-  @users = User.new
-  
-  erb :"/users/new"
-end
-
-post "/users" do
-  @new_user = User.create({"email" => params["users"]["email"], "password" => params["users"]["password"]})
-  
-  redirect "/users"
-end
 
 get "/users/:id/delete" do
   current_user
