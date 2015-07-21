@@ -21,7 +21,7 @@ end
 
 get "/users/:id/edit" do
   # current_user
-  
+  @user = User.find(params["id"])
   # @users = User.all
   erb :"/users/edit"
 end
@@ -30,7 +30,6 @@ put "/users/:id" do
   @users = User.find(params["id"])
   
   @users.email = params["users"]["email"]
-  @users.password = params["users"]["password"]
   
   @users.save
   

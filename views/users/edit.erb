@@ -1,15 +1,8 @@
   <form action="/users/<%=params["id"]%>" method= "post">
     <p>Enter information to Edit User </p>
     
-    <!-- <select name= "users[id]">
-      <%@users.each do|u| %>
-      <option value= "<%= u.id  %>>" - "<%= u.email %>"</option>
-      <% end %>
-    </select> -->
-      
     <input type= "hidden" name="_method" value= "put">
-    <input type= "text" name="Email" value= "users[email]">
-    <input type= "password" name="Password" value= "users[password]">
+    <input type= "text" name="Email" value= "<%= @users.email %>">
     
     <input type="submit">
   </form>
