@@ -1,12 +1,14 @@
 def current_user
-  if session[:user_id]
-    @current_user = User.find(session[:user_id])
+  if session[:user_id] == params["user_id"].to_i
+    # @current_user = User.find(session[:user_id])
   else
     redirect "/"
   end
 end
 
 get "/users/:user_id/stories" do
+  current_user
+  
   @user = User.find(params["user_id"])
   
   @stories = Story.where("user_id = #{params["user_id"]}")
@@ -16,7 +18,6 @@ end
 
 get "/users/:user_id/stories/new" do
   current_user
-  
   @user = User.find(params["user_id"])
   
   erb :"/stories/new"
