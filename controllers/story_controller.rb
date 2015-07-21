@@ -29,33 +29,37 @@ post "/users/:user_id/stories" do
   redirect "/users/#{params["user_id"]}/stories"
 end
 
-get "/users/:user_id/stories/delete" do
+# get "/users/:user_id/stories/delete" do
+#   current_user
+#
+#   @user = User.find(params["user_id"])
+#
+#   @stories = Story.where("user_id = #{params["user_id"]}")
+#   erb :"/stories/delete"
+# end
+
+get "/users/:user_id/stories/delete/:id" do
   current_user
   
-  @user = User.find(params["user_id"])
+  @stories = Story.find(params["id"])
   
-  @stories = Story.where("user_id = #{params["user_id"]}")
-  erb :"/stories/delete"
-end
-
-delete "/users/:user_id/stories/:id" do
-  Story.delete(params["story"]["id"])
+  @stories.delete
   
   redirect "/users/#{params["user_id"]}/stories"
 end
 
-get "/users/:user_id/stories/edit" do
+get "/users/:user_id/stories/edit/:id" do
   current_user
   
   @user = User.find(params["user_id"])
   
-  @stories = Story.where("user_id = #{params["user_id"]}")
+  @stories = Story.find(params["id"])
+  
   erb :"/stories/edit"
 end
 
-put "/users/:user_id/stories/:id" do
-  @story = Story.find(params["story"]["id"])
-  
+put "/users/:user_id/stories/:id" do 
+  @story = Story.find(params["id"]) 
   @story.title = params["story"]["title"]
   
   @story.save

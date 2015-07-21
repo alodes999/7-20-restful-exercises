@@ -1,14 +1,23 @@
 <h2>Stories for User <%= @user.email %></h2>
-
-<ul>
+  
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
   <% @stories.each do |s| %>
-    <li><%= s.title %></li>
-  <% end %>  
+  <tr>
+    <td><%= s.id %></td>
+    <td><%= s.title %></td>
+    <td><a href= "/users/<%= user.id %>/stories/edit/<%= s.id %>">Edit a Story</a></td>
+    <td><a href= "/users/<%= user.id %>/stories/delete/<%= s.id %>">Delete a Story</a></td>
+  </tr>
+  <% end %>
+</table>
+    
+    
+<ul>
+  <li><a href="/users/<%= @user.id %>/stories/new">Add a Story</a></li>
 </ul>
-  
-  
-  <ul>
-    <li><a href="/users/<%= @user.id %>/stories/new">Add a Story</a></li>
-    <li><a href="/users/<%= @user.id %>/stories/edit">Edit a Story</a></li>
-    <li><a href="/users/<%= @user.id %>/stories/delete">Delete a Story</a></li>
-  </ul>
