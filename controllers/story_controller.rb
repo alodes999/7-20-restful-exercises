@@ -15,7 +15,7 @@ get "/users/:user_id/stories" do
 end
 
 get "/users/:user_id/stories/new" do
-  current_user
+  # current_user
   
   @user = User.find(params["user_id"])
   
@@ -29,7 +29,7 @@ post "/users/:user_id/stories" do
 end
 
 get "/users/:user_id/stories/delete" do
-  current_user
+  # current_user
   
   @user = User.find(params["user_id"])
   
@@ -44,7 +44,7 @@ delete "/users/:user_id/stories/:id" do
 end
 
 get "/users/:user_id/stories/edit" do
-  current_user
+  # current_user
   
   @user = User.find(params["user_id"])
   

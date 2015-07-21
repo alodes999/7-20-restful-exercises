@@ -12,16 +12,15 @@ get "/users" do
   erb :"/users/home"
 end
 
-
 get "/users/:id/delete" do
-  current_user
+  # current_user
   User.delete(params["id"])
   
   redirect "/users"
 end
 
 get "/users/:id/edit" do
-  current_user
+  # current_user
   
   # @users = User.all
   erb :"/users/edit"
