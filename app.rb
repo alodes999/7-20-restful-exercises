@@ -36,3 +36,5 @@ require_relative "models/story.rb"
 require_relative "controllers/user_controller.rb"
 require_relative "controllers/story_controller.rb"
 require_relative "controllers/home_controller.rb"
+
+set :sessions, true

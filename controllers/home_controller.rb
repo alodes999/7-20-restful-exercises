@@ -18,11 +18,9 @@ end
 post "/verify_login" do
   attempted_password = params["user"]["password"]
   @user = User.where("email" => params["user"]["email"])
-  puts @user[0].password
   # Assuming there is a user with the given email address...
   # Make a new BCrypt object with the **password from the database**.
   actual_password = BCrypt::Password.new(@user[0].password)
-  puts "?????????????????????????????????????????????????????????\n\n\n"
   session[:user_id] = @user[0].id
   # So, an example:
   # actual_password = BCrypt::Password.new("$2a$10$87jFZs7pY2Fh33HR.lA9ouVLzevh45esv0UjdYF/b1jOGKC.YtfG2")

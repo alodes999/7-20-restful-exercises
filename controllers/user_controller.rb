@@ -13,15 +13,15 @@ get "/users" do
 end
 
 get "/users/:id/delete" do
-  # current_user
+  current_user
   User.delete(params["id"])
   
   redirect "/users"
 end
 
 get "/users/:id/edit" do
-  # current_user
-  @user = User.find(params["id"])
+  current_user
+  @users = User.find(params["id"])
   # @users = User.all
   erb :"/users/edit"
 end

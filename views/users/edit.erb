@@ -2,7 +2,7 @@
     <p>Enter information to Edit User </p>
     
     <input type= "hidden" name="_method" value= "put">
-    <input type= "text" name="Email" value= "<%= @users.email %>">
+    <input type= "text" name="users[email]" value= "<%= @users.email %>">
     
     <input type="submit">
   </form>
